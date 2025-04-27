@@ -30,11 +30,12 @@ environment:
 dependencies:
   bloc: ^9.0.0
   cupertino_icons: ^1.0.8
+  dots_indicator: ^4.0.1
   flutter:
     sdk: flutter
-  flutter_svg: ^2.1.0
   flutter_localizations:
     sdk: flutter
+  flutter_svg: ^2.1.0
 
 dev_dependencies:
   flutter_launcher_icons: ^0.14.3
