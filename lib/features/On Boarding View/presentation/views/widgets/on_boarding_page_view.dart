@@ -3,14 +3,23 @@ import 'package:fruits_hub/features/On%20Boarding%20View/presentation/views/widg
 import 'package:fruits_hub/utils/constants/assets.dart';
 
 class OnBoardingPageView extends StatelessWidget {
-  const OnBoardingPageView({super.key});
-
+  const OnBoardingPageView({
+    super.key,
+    required this.pageController,
+    required this.currentPage,
+  });
+  final PageController pageController;
+  final int currentPage;
   @override
   Widget build(BuildContext context) {
     return PageView(
+      controller: pageController,
       scrollDirection: Axis.horizontal,
       children: [
         PageViewItem(
+          isVisible:
+              (pageController.hasClients ? pageController.page!.round() : 0) ==  0,
+              // currentPage == 0,
           backgroundImage: Assets.assetsImagesPageViewItemBackgroundImage1,
           image: Assets.assetsImagesPageViewItemImage1,
           title: Row(
@@ -25,6 +34,7 @@ class OnBoardingPageView extends StatelessWidget {
               "اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.",
         ),
         PageViewItem(
+          isVisible:  (pageController.hasClients ? pageController.page!.round() : 0) !=  0,
           image: Assets.assetsImagesPageViewItemImage2,
           title: Text(
             'ابحث وتسوق',
