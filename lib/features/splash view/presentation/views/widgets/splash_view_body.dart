@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fruits_hub/features/On%20Boarding%20View/presentation/views/on_boarding_view.dart';
 import 'package:fruits_hub/utils/assets.dart';
 
-class SplashViewBody extends StatelessWidget {
+class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
+
+  @override
+  State<SplashViewBody> createState() => _SplashViewBodyState();
+}
+
+class _SplashViewBodyState extends State<SplashViewBody> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    executeDelayedNavigation();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,5 +34,11 @@ class SplashViewBody extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void executeDelayedNavigation() {
+    Future.delayed(const Duration(seconds: 4), () {
+      Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
+    });
   }
 }
