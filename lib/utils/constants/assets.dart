@@ -1,0 +1,37 @@
+// ignore_for_file: prefer_single_quotes
+class Assets {
+  Assets._();
+  
+  /// Assets for assetsImagesAppIcon
+  /// assets/images/app_icon.png
+  static const String assetsImagesAppIcon = "assets/images/app_icon.png";
+
+  /// Assets for assetsImagesLogo
+  /// assets/images/logo.svg
+  static const String assetsImagesLogo = "assets/images/logo.svg";
+
+  /// Assets for assetsImagesPageViewItemBackgroundImage1
+  /// assets/images/page_view_item_background_image1.svg
+  static const String assetsImagesPageViewItemBackgroundImage1 = "assets/images/page_view_item_background_image1.svg";
+
+  /// Assets for assetsImagesPageViewItemBackgroundImage2
+  /// assets/images/page_view_item_background_image2.svg
+  static const String assetsImagesPageViewItemBackgroundImage2 = "assets/images/page_view_item_background_image2.svg";
+
+  /// Assets for assetsImagesPageViewItemImage1
+  /// assets/images/page_view_item_image1.svg
+  static const String assetsImagesPageViewItemImage1 = "assets/images/page_view_item_image1.svg";
+
+  /// Assets for assetsImagesPageViewItemImage2
+  /// assets/images/page_view_item_image2.svg
+  static const String assetsImagesPageViewItemImage2 = "assets/images/page_view_item_image2.svg";
+
+  /// Assets for assetsImagesPlanetSplash
+  /// assets/images/planet_splash.svg
+  static const String assetsImagesPlanetSplash = "assets/images/planet_splash.svg";
+
+  /// Assets for assetsImagesSplashBottom
+  /// assets/images/splash_bottom.svg
+  static const String assetsImagesSplashBottom = "assets/images/splash_bottom.svg";
+}
+
