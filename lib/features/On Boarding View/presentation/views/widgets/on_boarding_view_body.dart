@@ -48,7 +48,10 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
           dotsCount: 2,
           decorator: DotsDecorator(
             activeColor: AppColors.primaryColor,
-
+            color:
+                currentPage == 1
+                    ? AppColors.primaryColor
+                    : AppColors.secondaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),
             ),
