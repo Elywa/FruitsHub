@@ -11,6 +11,7 @@ class PageViewItem extends StatelessWidget {
     required this.title,
     required this.backgroundImage,
     required this.subTitle,
+
     required this.isVisible,
   });
   final String image;
