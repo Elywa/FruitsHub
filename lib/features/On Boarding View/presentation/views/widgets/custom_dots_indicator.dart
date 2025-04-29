@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
 
 class CustomDotsIndicator extends StatelessWidget {
-  const CustomDotsIndicator({
-    super.key,
-    required this.currentPage,
-  });
+  const CustomDotsIndicator({super.key, required this.currentPage});
 
   final int currentPage;
 
@@ -19,10 +16,8 @@ class CustomDotsIndicator extends StatelessWidget {
         color:
             currentPage == 1
                 ? AppColors.primaryColor
-                : AppColors.secondaryColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5),
-        ),
+                : AppColors.secondaryColor2,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       ),
     );
   }
