@@ -1,5 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/core/services/prefs.dart';
+import 'package:fruits_hub/core/utils/constants.dart';
 import 'package:fruits_hub/features/On%20Boarding%20View/presentation/views/widgets/custom_dots_indicator.dart';
 import 'package:fruits_hub/features/On%20Boarding%20View/presentation/views/widgets/on_boarding_page_view.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
@@ -53,6 +55,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
           child: CustomButton(
             text: "ابدأ الان",
             onPressed: () {
+              Prefs.setBool(kIsOnBoradingView, true);
               Navigator.pushReplacementNamed(context, LoginView.routeName);
             },
             isVisible: currentPage == 1 ? true : false,
