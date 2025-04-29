@@ -1,15 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/app_text_styles.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/custom_checkbox.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 
-class AcceptTermsWidget extends StatelessWidget {
+class AcceptTermsWidget extends StatefulWidget {
   const AcceptTermsWidget({super.key});
+
+  @override
+  State<AcceptTermsWidget> createState() => _AcceptTermsWidgetState();
+}
+
+class _AcceptTermsWidgetState extends State<AcceptTermsWidget> {
+  bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CustomCheckbox(isChecked: true),
+        CustomCheckbox(
+          isChecked: isChecked,
+          onChecked: (value) {
+            isChecked = value;
+            setState(() {});
+          },
+        ),
         SizedBox(width: 10),
         Expanded(
           child: Text.rich(
