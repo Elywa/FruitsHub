@@ -7,4 +7,6 @@ class AppColors {
   static const Color secondaryColor = Color(0xFFF4A91F);
   static const Color lightSecondaryColor = Color(0xFFF8C76D);
   static const Color subTitleColor = Color(0xFF4E5556);
+  static const Color textFieldColor = Color(0xffF9FAFA);
+  
 }
