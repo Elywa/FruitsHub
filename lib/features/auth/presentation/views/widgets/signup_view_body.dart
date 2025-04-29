@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/core/widgets/custom_button.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/accept_terms_widget.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/custom_text_form_field.dart';
+import 'package:fruits_hub/features/auth/presentation/views/widgets/have_an_account_widget.dart';
 
 class SignupViewBody extends StatelessWidget {
   const SignupViewBody({super.key});
@@ -24,6 +26,14 @@ class SignupViewBody extends StatelessWidget {
             ),
             SizedBox(height: 16),
             AcceptTermsWidget(),
+            SizedBox(height: 30),
+            CustomButton(
+              text: " إنشــاء حســاب جـديد",
+              onPressed: () {},
+              isVisible: true,
+            ),
+            SizedBox(height: 16),
+            HaveAnAccountWidget(),
           ],
         ),
       ),
