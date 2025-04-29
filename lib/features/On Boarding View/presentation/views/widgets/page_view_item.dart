@@ -2,7 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:fruits_hub/utils/constants/assets.dart';
+import 'package:fruits_hub/core/utils/assets.dart';
 
 class PageViewItem extends StatelessWidget {
   const PageViewItem({

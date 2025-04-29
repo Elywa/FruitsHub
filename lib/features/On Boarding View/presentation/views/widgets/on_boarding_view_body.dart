@@ -1,8 +1,9 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/features/On%20Boarding%20View/presentation/views/widgets/custom_dots_indicator.dart';
 import 'package:fruits_hub/features/On%20Boarding%20View/presentation/views/widgets/on_boarding_page_view.dart';
-import 'package:fruits_hub/utils/constants/app_colors.dart';
-import 'package:fruits_hub/utils/widgets/custom_button.dart';
+import 'package:fruits_hub/core/utils/app_colors.dart';
+import 'package:fruits_hub/core/widgets/custom_button.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
   const OnBoardingViewBody({super.key});
@@ -44,19 +45,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             currentPage: currentPage,
           ),
         ),
-        DotsIndicator(
-          dotsCount: 2,
-          decorator: DotsDecorator(
-            activeColor: AppColors.primaryColor,
-            color:
-                currentPage == 1
-                    ? AppColors.primaryColor
-                    : AppColors.secondaryColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5),
-            ),
-          ),
-        ),
+        CustomDotsIndicator(currentPage: currentPage),
         const SizedBox(height: 29),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),

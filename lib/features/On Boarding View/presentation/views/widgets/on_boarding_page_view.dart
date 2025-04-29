@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/features/On%20Boarding%20View/presentation/views/widgets/page_view_item.dart';
-import 'package:fruits_hub/utils/constants/assets.dart';
+import 'package:fruits_hub/core/utils/assets.dart';
 
 class OnBoardingPageView extends StatelessWidget {
   const OnBoardingPageView({

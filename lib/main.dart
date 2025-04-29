@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fruits_hub/features/splash%20view/presentation/views/splash_view.dart';
-import 'package:fruits_hub/utils/functions/routing.dart';
+import 'package:fruits_hub/core/functions/routing.dart';
 
 import 'generated/l10n.dart';
 
