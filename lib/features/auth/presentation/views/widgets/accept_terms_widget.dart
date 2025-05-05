@@ -4,8 +4,8 @@ import 'package:fruits_hub/features/auth/presentation/views/widgets/custom_check
 import 'package:fruits_hub/generated/l10n.dart';
 
 class AcceptTermsWidget extends StatefulWidget {
-  const AcceptTermsWidget({super.key});
-
+  const AcceptTermsWidget({super.key, required this.onChanged});
+  final ValueChanged<bool> onChanged;
   @override
   State<AcceptTermsWidget> createState() => _AcceptTermsWidgetState();
 }
@@ -21,6 +21,7 @@ class _AcceptTermsWidgetState extends State<AcceptTermsWidget> {
           isChecked: isChecked,
           onChecked: (value) {
             isChecked = value;
+            widget.onChanged(value);
             setState(() {});
           },
         ),
