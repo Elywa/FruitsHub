@@ -43,13 +43,10 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 hint: 'البريد الإلكتروني',
               ),
               SizedBox(height: 16),
-              CustomTextFormField(
+              PasswordTextForField(
                 onSaved: (value) {
                   password = value!;
                 },
-                hint: 'كلمة المرور',
-                suffixIcon: Icon(Icons.visibility_off_outlined),
-                keyboardType: TextInputType.number,
               ),
               SizedBox(height: 16),
               AcceptTermsWidget(),
@@ -78,6 +75,40 @@ class _SignupViewBodyState extends State<SignupViewBody> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class PasswordTextForField extends StatefulWidget {
+  const PasswordTextForField({super.key, this.onSaved});
+  final void Function(String?)? onSaved;
+
+  @override
+  State<PasswordTextForField> createState() => _PasswordTextForFieldState();
+}
+
+class _PasswordTextForFieldState extends State<PasswordTextForField> {
+  bool obscureText = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomTextFormField(
+      obscureText: obscureText,
+      onSaved: widget.onSaved,
+      keyboardType: TextInputType.number,
+      hint: 'كلمة المرور',
+      suffixIcon: GestureDetector(
+        onTap: () {
+          setState(() {
+            obscureText = !obscureText;
+          });
+        },
+
+        child:
+            obscureText
+                ? Icon(Icons.visibility_off_outlined)
+                : Icon(Icons.visibility_outlined),
       ),
     );
   }

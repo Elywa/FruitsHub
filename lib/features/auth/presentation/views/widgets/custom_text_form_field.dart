@@ -9,11 +9,13 @@ class CustomTextFormField extends StatelessWidget {
     required this.hint,
     this.suffixIcon,
     required this.onSaved,
+    this.obscureText = false,
   });
   final void Function(String?)? onSaved;
   final TextInputType? keyboardType;
   final String hint;
   final Widget? suffixIcon;
+  final bool obscureText;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -23,6 +25,7 @@ class CustomTextFormField extends StatelessWidget {
         }
         return null;
       },
+    obscureText: obscureText,
       onSaved: onSaved,
       keyboardType: keyboardType,
       decoration: InputDecoration(
