@@ -5,6 +5,6 @@ import 'package:fruits_hub/features/auth/domain/entities/user_entity.dart';
 abstract class AuthRepo {
   Future<Either<Failures , UserEntity>> createUserWithEmailAndPassword({
     required String email,
-    required String password,
+    required String password, required String name,
   });
 }
