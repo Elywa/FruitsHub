@@ -25,7 +25,7 @@ class AuthRepoImpl implements AuthRepo {
       return Left(ServerFailure(e.message));
     } catch (e) {
       return Left(
-        ServerFailure('An unknown error occurred, please try again later.'),
+        ServerFailure('لقد حدث خطأ غير معروف، يرجى المحاولة مرة أخرى لاحقًا.'),
       );
     }
   }

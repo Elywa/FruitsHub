@@ -19,9 +19,10 @@ class LoginViewBody extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: 24),
-            CustomTextFormField(hint: 'البريد الالكتروني'),
+            CustomTextFormField(hint: 'البريد الالكتروني' , onSaved: (Value){},),
             SizedBox(height: 16),
             CustomTextFormField(
+              onSaved: (Value) {},
               suffixIcon: Icon(Icons.visibility_off_outlined),
               hint: 'كلمة المرور',
               keyboardType: TextInputType.number,
