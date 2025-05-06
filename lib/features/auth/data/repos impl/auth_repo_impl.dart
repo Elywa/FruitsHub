@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:fruits_hub/core/errors/exceptions.dart';
 import 'package:fruits_hub/core/errors/failures.dart';
@@ -24,6 +26,33 @@ class AuthRepoImpl implements AuthRepo {
     } on CustomException catch (e) {
       return Left(ServerFailure(e.message));
     } catch (e) {
+      log(
+        "An Error Occured in AuthRepoImpl.createUserWithEmailAndPassword which is: ${e.toString()}",
+      );
+      return Left(
+        ServerFailure('لقد حدث خطأ غير معروف، يرجى المحاولة مرة أخرى لاحقًا.'),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failures, UserEntity>> signInWithEmailAndPassword({
+    required String email,
+    required String password,
+   
+  }) async {
+    try {
+      var user = await fireBaseService.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return Right(UserModel.fromFireBaseAuthUser(user));
+    } on Exception catch (e) {
+      return Left(ServerFailure(e.toString()));
+    } catch (e) {
+      log(
+        "An Error Occured in AuthRepoImpl.signInWithEmailAndPassword which is: ${e.toString()}",
+      );
       return Left(
         ServerFailure('لقد حدث خطأ غير معروف، يرجى المحاولة مرة أخرى لاحقًا.'),
       );
