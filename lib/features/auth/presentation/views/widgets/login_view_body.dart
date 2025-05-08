@@ -20,7 +20,7 @@ class LoginViewBody extends StatefulWidget {
 
 class _LoginViewBodyState extends State<LoginViewBody> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-   AutovalidateMode? autoValidateMode = AutovalidateMode.disabled;
+  AutovalidateMode? autoValidateMode = AutovalidateMode.disabled;
   late String email, password;
   @override
   Widget build(BuildContext context) {
@@ -35,20 +35,20 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               SizedBox(height: 24),
               CustomTextFormField(
                 validator: (mail) {
-  if (mail == null || mail.isEmpty) {
-    return 'هذا الحقل مطلوب';
-  }
+                  if (mail == null || mail.isEmpty) {
+                    return 'هذا الحقل مطلوب';
+                  }
 
-  final emailRegex = RegExp(
-    r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-  );
+                  final emailRegex = RegExp(
+                    r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+                  );
 
-  if (!emailRegex.hasMatch(mail)) {
-    return 'يرجى إدخال بريد إلكتروني صالح';
-  }
+                  if (!emailRegex.hasMatch(mail)) {
+                    return 'يرجى إدخال بريد إلكتروني صالح';
+                  }
 
-  return null;
-},
+                  return null;
+                },
                 hint: 'البريد الالكتروني',
                 onSaved: (value) {
                   email = value!;
@@ -87,9 +87,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     context.read<SigninCubitCubit>().signInWithEmailAndPassword(
                       email: email,
                       password: password,
-                    
                     );
-                  }else {
+                  } else {
                     setState(() {
                       autoValidateMode = AutovalidateMode.always;
                     });
@@ -105,7 +104,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               CustomLoginButton(
                 iconImage: Assets.assetsImagesGoogleIcon,
                 textButton: "تسجيل دخول بحساب جوجل",
-                onPressed: () {},
+                onPressed: () {
+                  context.read<SigninCubitCubit>().signInWithGoogle();
+                },
               ),
               SizedBox(height: 16),
               CustomLoginButton(

@@ -39,7 +39,6 @@ class AuthRepoImpl implements AuthRepo {
   Future<Either<Failures, UserEntity>> signInWithEmailAndPassword({
     required String email,
     required String password,
-   
   }) async {
     try {
       var user = await fireBaseService.signInWithEmailAndPassword(
@@ -54,6 +53,21 @@ class AuthRepoImpl implements AuthRepo {
         "An Error Occured in AuthRepoImpl.signInWithEmailAndPassword which is: ${e.toString()}",
       );
       return Left(
+        ServerFailure('لقد حدث خطأ غير معروف، يرجى المحاولة مرة أخرى لاحقًا.'),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failures, UserEntity>> signInWithGoogle() async {
+    try {
+      var user = await fireBaseService.signInWithGoogle();
+      return right(UserModel.fromFireBaseAuthUser(user));
+    } catch (e) {
+      log(
+        "An Error Occured in AuthRepoImpl.signInWithGoogle which is: ${e.toString()}",
+      );
+      return left(
         ServerFailure('لقد حدث خطأ غير معروف، يرجى المحاولة مرة أخرى لاحقًا.'),
       );
     }
