@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:fruits_hub/core/errors/exceptions.dart';
 import 'package:fruits_hub/core/errors/failures.dart';
+import 'package:fruits_hub/core/services/constants.dart';
+import 'package:fruits_hub/core/services/data_base_service.dart';
 import 'package:fruits_hub/core/services/fire_base_service.dart';
 import 'package:fruits_hub/features/auth/data/models/user_model.dart';
 import 'package:fruits_hub/features/auth/domain/entities/user_entity.dart';
@@ -10,7 +12,8 @@ import 'package:fruits_hub/features/auth/domain/repos/auth_repo.dart';
 
 class AuthRepoImpl implements AuthRepo {
   final FireBaseService fireBaseService;
-  AuthRepoImpl({required this.fireBaseService});
+  final DataBaseService dataBaseService;
+  AuthRepoImpl(this.dataBaseService, {required this.fireBaseService});
   @override
   Future<Either<Failures, UserEntity>> createUserWithEmailAndPassword({
     required String email,
@@ -86,5 +89,13 @@ class AuthRepoImpl implements AuthRepo {
         ServerFailure('لقد حدث خطأ غير معروف، يرجى المحاولة مرة أخرى لاحقًا.'),
       );
     }
+  }
+
+  @override
+  Future addUserData({required UserEntity user}) async {
+    await dataBaseService.addUserData(
+      path: Constants.userCollection,
+      data: user.toMap(),
+    );
   }
 }
