@@ -13,7 +13,7 @@ import 'package:fruits_hub/features/auth/domain/repos/auth_repo.dart';
 class AuthRepoImpl implements AuthRepo {
   final FireBaseService fireBaseService;
   final DataBaseService dataBaseService;
-  AuthRepoImpl(this.dataBaseService, {required this.fireBaseService});
+  AuthRepoImpl({required this.dataBaseService, required this.fireBaseService});
   @override
   Future<Either<Failures, UserEntity>> createUserWithEmailAndPassword({
     required String email,
@@ -25,7 +25,9 @@ class AuthRepoImpl implements AuthRepo {
         email: email,
         password: password,
       );
-      return Right(UserModel.fromFireBaseAuthUser(user));
+      var userEntity = UserModel.fromFireBaseAuthUser(user);
+      await addUserData(user: userEntity);
+      return Right(userEntity);
     } on CustomException catch (e) {
       return Left(ServerFailure(e.message));
     } catch (e) {
