@@ -60,8 +60,8 @@ class AuthRepoImpl implements AuthRepo {
         email: email,
         password: password,
       );
-
-      return Right(UserModel.fromFireBaseAuthUser(user));
+      var userEntity = await getUserData(uId: user.uid);
+      return Right(userEntity);
     } on Exception catch (e) {
       return Left(ServerFailure(e.toString()));
     } catch (e) {
@@ -80,6 +80,15 @@ class AuthRepoImpl implements AuthRepo {
     try {
       user = await fireBaseService.signInWithGoogle();
       var userEntity = UserModel.fromFireBaseAuthUser(user);
+      var isUserExists = await dataBaseService.ifDataExists(
+        path: Constants.userCollection,
+        documentId: user.uid,
+      );
+      if (isUserExists) {
+        await getUserData(uId: user.uid);
+      } else {
+        await addUserData(user: userEntity);
+      }
       await addUserData(user: userEntity);
       return right(userEntity);
     } catch (e) {
@@ -118,6 +127,16 @@ class AuthRepoImpl implements AuthRepo {
     await dataBaseService.addUserData(
       path: Constants.userCollection,
       data: user.toMap(),
+      documentId: user.uId,
     );
+  }
+
+  @override
+  Future<UserEntity> getUserData({required String uId}) async {
+    var user = await dataBaseService.getData(
+      path: Constants.getUserData,
+      documentId: uId,
+    );
+    return UserModel.fromJson(user);
   }
 }
