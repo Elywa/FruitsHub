@@ -129,12 +129,18 @@ class FireBaseService {
     return (await FirebaseAuth.instance.signInWithCredential(credential)).user!;
   }
 
-    Future<User> signInWithFacebook() async {
-
+  Future<User> signInWithFacebook() async {
     final LoginResult loginResult = await FacebookAuth.instance.login();
 
-    final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
+    final OAuthCredential facebookAuthCredential =
+        FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
 
-    return (await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential)).user!;
+    return (await FirebaseAuth.instance.signInWithCredential(
+      facebookAuthCredential,
+    )).user!;
+  }
+
+  Future deleteUser() async {
+    await FirebaseAuth.instance.currentUser!.delete();
   }
 }
