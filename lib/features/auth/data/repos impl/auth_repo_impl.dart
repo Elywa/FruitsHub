@@ -27,21 +27,26 @@ class AuthRepoImpl implements AuthRepo {
         email: email,
         password: password,
       );
-      var userEntity = UserModel.fromFireBaseAuthUser(user);
+      var userEntity = UserEntity(name: name, email: email, uId: user.uid);
       await addUserData(user: userEntity);
       return Right(userEntity);
     } on CustomException catch (e) {
-      if (user != null) {
-        await fireBaseService.deleteUser();
-      }
+      await deleteUser(user);
       return Left(ServerFailure(e.message));
     } catch (e) {
+      await deleteUser(user);
       log(
         "An Error Occured in AuthRepoImpl.createUserWithEmailAndPassword which is: ${e.toString()}",
       );
       return Left(
         ServerFailure('لقد حدث خطأ غير معروف، يرجى المحاولة مرة أخرى لاحقًا.'),
       );
+    }
+  }
+
+  Future<void> deleteUser(User? user) async {
+    if (user != null) {
+      await fireBaseService.deleteUser();
     }
   }
 
@@ -55,6 +60,7 @@ class AuthRepoImpl implements AuthRepo {
         email: email,
         password: password,
       );
+
       return Right(UserModel.fromFireBaseAuthUser(user));
     } on Exception catch (e) {
       return Left(ServerFailure(e.toString()));
@@ -70,10 +76,14 @@ class AuthRepoImpl implements AuthRepo {
 
   @override
   Future<Either<Failures, UserEntity>> signInWithGoogle() async {
+    User? user;
     try {
-      var user = await fireBaseService.signInWithGoogle();
-      return right(UserModel.fromFireBaseAuthUser(user));
+      user = await fireBaseService.signInWithGoogle();
+      var userEntity = UserModel.fromFireBaseAuthUser(user);
+      await addUserData(user: userEntity);
+      return right(userEntity);
     } catch (e) {
+      await deleteUser(user);
       log(
         "An Error Occured in AuthRepoImpl.signInWithGoogle which is: ${e.toString()}",
       );
@@ -85,10 +95,15 @@ class AuthRepoImpl implements AuthRepo {
 
   @override
   Future<Either<Failures, UserEntity>> signInWithFaceBook() async {
+    User? user;
     try {
-      var user = await fireBaseService.signInWithFacebook();
-      return right(UserModel.fromFireBaseAuthUser(user));
+      user = await fireBaseService.signInWithFacebook();
+      var userEntity = UserModel.fromFireBaseAuthUser(user);
+      await addUserData(user: userEntity);
+
+      return right(userEntity);
     } catch (e) {
+      await deleteUser(user);
       log(
         "An Error Occured in AuthRepoImpl.signInWithFaceBook which is: ${e.toString()}",
       );
