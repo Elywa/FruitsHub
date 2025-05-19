@@ -11,10 +11,10 @@ class FeaturedItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.sizeOf(context).width,
+      width: MediaQuery.sizeOf(context).width * 0.9,
       height: MediaQuery.sizeOf(context).height * 0.21,
       decoration: ShapeDecoration(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         image: DecorationImage(
           image: AssetImage(Assets.assetsImagesFruitsTest),
           fit: BoxFit.fill,
@@ -27,7 +27,13 @@ class FeaturedItem extends StatelessWidget {
             top: 0,
             right: 0,
             bottom: 0,
-            child: SizedBox(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(8),
+                  bottomRight: Radius.circular(8),
+                ),
+              ),
               width: MediaQuery.sizeOf(context).width * 0.46,
               child: SvgPicture.asset(
                 Assets.assetsImagesCircelFeaturedItem,
