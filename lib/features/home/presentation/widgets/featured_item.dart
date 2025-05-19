@@ -28,7 +28,7 @@ class FeaturedItem extends StatelessWidget {
             right: 0,
             bottom: 0,
             child: SizedBox(
-              width: MediaQuery.sizeOf(context).width * 0.5,
+              width: MediaQuery.sizeOf(context).width * 0.46,
               child: SvgPicture.asset(
                 Assets.assetsImagesCircelFeaturedItem,
                 fit: BoxFit.fill,
@@ -36,7 +36,7 @@ class FeaturedItem extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 28),
+            padding: const EdgeInsets.only(right: 30),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -51,7 +51,11 @@ class FeaturedItem extends StatelessWidget {
                   style: AppTextStyles.bold19.copyWith(color: Colors.white),
                 ),
                 SizedBox(height: 15),
-                ShopNowButton(onPressed: () {}),
+                ShopNowButton(
+                  onPressed: () {
+                    debugPrint("Shop Now Button Pressed");
+                  },
+                ),
                 SizedBox(height: 30),
               ],
             ),
