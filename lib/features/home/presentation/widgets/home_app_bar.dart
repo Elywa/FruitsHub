@@ -9,6 +9,7 @@ class HomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      contentPadding: EdgeInsets.zero,
       title: Text(
         'صباح الخير !..',
         style: AppTextStyles.regular16.copyWith(color: Color(0xFF949D9E)),

@@ -48,6 +48,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             currentPage: currentPage,
           ),
         ),
+        const SizedBox(height: 29),
         CustomDotsIndicator(currentPage: currentPage),
         const SizedBox(height: 29),
         Padding(

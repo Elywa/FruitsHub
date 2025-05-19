@@ -38,6 +38,14 @@ class Assets {
   /// assets/images/google_icon.svg
   static const String assetsImagesGoogleIcon = "assets/images/google_icon.svg";
 
+  /// Assets for assetsImagesGrapesGreen488x
+  /// assets/images/Grapes---Green_488x.jpg
+  static const String assetsImagesGrapesGreen488x = "assets/images/Grapes---Green_488x.jpg";
+
+  /// Assets for assetsImagesGraps
+  /// assets/images/graps.png
+  static const String assetsImagesGraps = "assets/images/graps.png";
+
   /// Assets for assetsImagesLogo
   /// assets/images/logo.svg
   static const String assetsImagesLogo = "assets/images/logo.svg";

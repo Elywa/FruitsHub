@@ -63,16 +63,17 @@ class PageViewItem extends StatelessWidget {
           ),
         ),
         SizedBox(height: 64),
-        title,
-        SizedBox(height: 24),
+        Expanded(child: title),
 
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 37),
-          child: Text(
-            subTitle,
-            textAlign: TextAlign.center,
-            style: AppTextStyles.semiBold13.copyWith(
-              color: AppColors.subTitleColor,
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 37),
+            child: Text(
+              subTitle,
+              textAlign: TextAlign.center,
+              style: AppTextStyles.semiBold13.copyWith(
+                color: AppColors.subTitleColor,
+              ),
             ),
           ),
         ),
