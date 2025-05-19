@@ -3,7 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:fruits_hub/core/utils/app_colors.dart';
 import 'package:fruits_hub/core/utils/app_text_styles.dart';
 import 'package:fruits_hub/core/utils/assets.dart';
+import 'package:fruits_hub/features/home/presentation/widgets/best_seller_heading.dart';
 import 'package:fruits_hub/features/home/presentation/widgets/featured_item.dart';
+import 'package:fruits_hub/features/home/presentation/widgets/featured_item_list_view.dart';
 import 'package:fruits_hub/features/home/presentation/widgets/home_search_field.dart';
 import 'package:fruits_hub/features/home/presentation/widgets/home_app_bar.dart';
 
@@ -25,32 +27,12 @@ class HomeViewBody extends StatelessWidget {
                 HomeSearchField(),
                 SizedBox(height: 12),
                 FeaturedItemsListView(),
+                SizedBox(height: 12),
+                BestSellerHeading(),
               ],
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class FeaturedItemsListView extends StatelessWidget {
-  const FeaturedItemsListView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.sizeOf(context).height * 0.21,
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
-            child: FeaturedItem(),
-          );
-        },
-        itemCount: 5,
-        scrollDirection: Axis.horizontal,
-        physics: BouncingScrollPhysics(),
       ),
     );
   }
