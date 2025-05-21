@@ -89,5 +89,9 @@ class Assets {
   /// Assets for assetsImagesSplashBottom
   /// assets/images/splash_bottom.svg
   static const String assetsImagesSplashBottom = "assets/images/splash_bottom.svg";
+
+  /// Assets for assetsImagesWatermillomTest
+  /// assets/images/watermillom_test.png
+  static const String assetsImagesWatermillomTest = "assets/images/watermillom_test.png";
 }
 
