@@ -8,4 +8,5 @@ class AppColors {
   static const Color lightSecondaryColor = Color(0xFFF8C76D);
   static const Color subTitleColor = Color(0xFF4E5556);
   static const Color textFieldColor = Color(0xffF9FAFA);
+  static const Color actviveItemBackgroundColor = Color(0xffEEEEEE);
 }
