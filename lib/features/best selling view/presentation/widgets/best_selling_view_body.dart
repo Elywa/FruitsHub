@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:fruits_hub/core/utils/app_text_styles.dart';
 import 'package:fruits_hub/core/utils/assets.dart';
 import 'package:fruits_hub/core/widgets/custom_app_bar.dart';
+import 'package:fruits_hub/core/widgets/notification_widget.dart';
 import 'package:fruits_hub/features/home/presentation/widgets/best_seller_grid_view.dart';
 
 class BestSellingViewBody extends StatelessWidget {
@@ -21,14 +22,7 @@ class BestSellingViewBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 buildAppBar(
-                  CircleAvatar(
-                    backgroundColor: Color(0xffEEF8ED),
-                    radius: 20,
-                    child: SvgPicture.asset(
-                      Assets.assetsImagesNotification,
-                      fit: BoxFit.fill,
-                    ),
-                  ),
+                  NotificationWidget(),
                   context: context,
                   title: 'الأكثر مبيعًا',
                 ),
@@ -45,3 +39,5 @@ class BestSellingViewBody extends StatelessWidget {
     );
   }
 }
+
+
