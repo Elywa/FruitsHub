@@ -7,27 +7,25 @@ class BestSellerHeading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        GestureDetector(
-          child: Text(
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, BestSellingView.routeName);
+      },
+      child: Row(
+        children: [
+          Text(
             'الأكثر مبيعا',
             style: AppTextStyles.bold16.copyWith(color: Color(0xFF0C0D0D)),
           ),
-        ),
-        Spacer(),
-        GestureDetector(
-          onTap: () {
-            Navigator.pushNamed(context, BestSellingView.routeName);
-          },
-          child: Text(
+          Spacer(),
+          Text(
             'المزيد',
             style: AppTextStyles.regular13.copyWith(
               color: Color(0xFF0C0D0D).withOpacity(0.6),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
