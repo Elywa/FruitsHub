@@ -7,6 +7,7 @@ import 'package:fruits_hub/features/home/domain/entities/bottom_navigation_bar_i
 import 'package:fruits_hub/features/home/presentation/widgets/active_item.dart';
 import 'package:fruits_hub/features/home/presentation/widgets/custom_bottom_navigation_bar_item.dart';
 import 'package:fruits_hub/features/home/presentation/widgets/inActive_item.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   const CustomBottomNavigationBar({super.key});
@@ -18,6 +19,7 @@ class CustomBottomNavigationBar extends StatefulWidget {
 
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Container(
