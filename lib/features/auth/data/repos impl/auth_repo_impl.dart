@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
@@ -7,6 +8,8 @@ import 'package:fruits_hub/core/errors/failures.dart';
 import 'package:fruits_hub/core/services/constants.dart';
 import 'package:fruits_hub/core/services/data_base_service.dart';
 import 'package:fruits_hub/core/services/fire_base_service.dart';
+import 'package:fruits_hub/core/services/prefs.dart';
+import 'package:fruits_hub/core/utils/constants.dart';
 import 'package:fruits_hub/features/auth/data/models/user_model.dart';
 import 'package:fruits_hub/features/auth/domain/entities/user_entity.dart';
 import 'package:fruits_hub/features/auth/domain/repos/auth_repo.dart';
@@ -126,7 +129,7 @@ class AuthRepoImpl implements AuthRepo {
   Future addUserData({required UserEntity user}) async {
     await dataBaseService.addUserData(
       path: Constants.userCollection,
-      data: user.toMap(),
+      data: UserModel.fromEntity(user).toMap(),
       documentId: user.uId,
     );
   }
@@ -138,5 +141,12 @@ class AuthRepoImpl implements AuthRepo {
       documentId: uId,
     );
     return UserModel.fromJson(user);
+  }
+
+  @override
+  Future saveUserData({required UserEntity user}) async {
+    var jsonData = jsonEncode(UserModel.fromEntity(user).toMap());
+
+    await Prefs.setString(kUserData, jsonData);
   }
 }
