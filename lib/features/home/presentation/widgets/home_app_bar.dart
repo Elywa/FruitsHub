@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fruits_hub/core/functions/get_user.dart';
+import 'package:fruits_hub/core/services/prefs.dart';
 import 'package:fruits_hub/core/utils/app_text_styles.dart';
 import 'package:fruits_hub/core/utils/assets.dart';
+import 'package:fruits_hub/core/utils/constants.dart';
 import 'package:fruits_hub/core/widgets/notification_widget.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -15,7 +18,7 @@ class HomeAppBar extends StatelessWidget {
         'صباح الخير !..',
         style: AppTextStyles.regular16.copyWith(color: Color(0xFF949D9E)),
       ),
-      subtitle: const Text('أحمد مصطفي', style: AppTextStyles.bold16),
+      subtitle: Text(getUser().name, style: AppTextStyles.bold16),
       trailing: NotificationWidget(),
       leading: CircleAvatar(
         radius: 25,

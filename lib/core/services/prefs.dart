@@ -16,11 +16,11 @@ class Prefs {
     await _instance.setString(key, value);
   }
 
-  static String? getString(String key) {
+  static getString(String key) {
     return _instance.getString(key);
   }
 
-  static bool getBool(String key, {bool defaultValue = false}) {
+  static getBool(String key, {bool defaultValue = false}) {
     return _instance.getBool(key) ?? defaultValue;
   }
 }

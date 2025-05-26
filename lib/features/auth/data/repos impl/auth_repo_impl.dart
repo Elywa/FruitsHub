@@ -64,6 +64,7 @@ class AuthRepoImpl implements AuthRepo {
         password: password,
       );
       var userEntity = await getUserData(uId: user.uid);
+      await saveUserData(user: userEntity);
       return Right(userEntity);
     } on Exception catch (e) {
       return Left(ServerFailure(e.toString()));
@@ -93,6 +94,7 @@ class AuthRepoImpl implements AuthRepo {
         await addUserData(user: userEntity);
       }
       await addUserData(user: userEntity);
+      await saveUserData(user: userEntity);
       return right(userEntity);
     } catch (e) {
       await deleteUser(user);
